@@ -42,12 +42,18 @@ def collect_trades(n_batches=5, sleep=0.2):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--batches", type=int, default=10)
+    parser.add_argument("--sleep", type=float, default=0.2, help="Seconds to sleep between API calls")
     parser.add_argument("--output", type=str, default="data/raw/trades.csv")
     args = parser.parse_args()
 
     # Ensure directory exists
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
 
-    df = collect_trades(n_batches=args.batches)
+    print(f"Fetching {args.batches} batches with {args.sleep}s delay...")
+    df = collect_trades(n_batches=args.batches, sleep=args.sleep)
     df.to_csv(args.output, index=False)
+    
+    # Calculate time span to verify we have enough data
+    time_span = df['time'].max() - df['time'].min() if not df.empty else "0"
     print(f"Saved {len(df)} unique trades to {args.output}")
+    print(f"Time span covered: {time_span}")
