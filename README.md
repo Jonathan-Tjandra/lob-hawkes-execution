@@ -58,25 +58,21 @@ The agent, trained on synthetic Hawkes data, successfully generalized to real-wo
     ```
 
 3. **Download Data**
-Download data from BTC-USD activity using 150 batches. 
     ```
     python src/data/fetch_trades.py
     ```
 
 4. **Preprocess Data**
-Calibrates Hawkes parameters and generates the processed .csv for the environment.
     ```
     python src/data/preprocess_historical.py
     ```
 
 5. **Run the Historical Backtest**
-Evaluate the pre-trained agent against historical Coinbase data to generate the comparative alpha dashboard. 
     ```
     python notebooks/run_historical_backtest.py
     ```
 
 6. **(Optional) Re-train the Agent**
-Initialize a new PPO training loop on the stochastic Almgren-Chriss environment.
     ```
     python src/agents/train_ppo.py
     ```
