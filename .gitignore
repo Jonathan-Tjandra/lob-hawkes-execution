@@ -151,9 +151,9 @@ activemq-data/
 .env
 .envrc
 .venv
-env/
-venv/
-ENV/
+/env/
+/venv/
+/ENV/
 env.bak/
 venv.bak/
 
@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Data
+data/raw/*
+data/processed/*
+!data/**/*.keep
+
+# vscode
+.vscode
