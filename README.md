@@ -47,25 +47,38 @@ The agent, trained on synthetic Hawkes data, successfully generalized to real-wo
 ## 🛠️ Installation & Usage
 
 1. **Clone the Repo**
-   ```bash
+   ```
    git clone [https://github.com/Jonathan-Tjandra/lob-hawkes-execution.git](https://github.com/Jonathan-Tjandra/lob-hawkes-execution.git)
    cd lob-hawkes-execution
+   ```
 
 2. **Install Dependencies**
-    ```bash
+    ```
     pip install -r requirements.txt
     ```
 
-**1. Run the Historical Backtest**
-Evaluate the pre-trained agent against historical Coinbase data to generate the comparative alpha dashboard.
-    ```bash
-    python src/analysis/unified_backtest.py
+3. **Download Data**
+Download data from BTC-USD activity using 150 batches. 
+    ```
+    python src/data/fetch_trades.py
     ```
 
-**2. (Optional) Re-train the Agent**
+4. **Preprocess Data**
+Calibrates Hawkes parameters and generates the processed .csv for the environment.
+    ```
+    python src/data/preprocess_historical.py
+    ```
+
+5. **Run the Historical Backtest**
+Evaluate the pre-trained agent against historical Coinbase data to generate the comparative alpha dashboard. 
+    ```
+    python notebooks/run_historical_backtest.py
+    ```
+
+6. **(Optional) Re-train the Agent**
 Initialize a new PPO training loop on the stochastic Almgren-Chriss environment.
-    ```bash
-    python src/train_ppo.py
+    ```
+    python src/agents/train_ppo.py
     ```
 
 ---
@@ -75,24 +88,3 @@ Initialize a new PPO training loop on the stochastic Almgren-Chriss environment.
 The fully trained agent weights have been pushed to this repository. You do not need to re-train the model from scratch to evaluate its performance.
 
 - **Weights Location:** `results/models/ppo_execution_agent.zip`
-
----
-
-## 📁 Repository Structure
-
-```
-├── data/
-│   ├── raw/                # Historical BTC-USD trades from Coinbase
-│   └── processed/          # Pre-calculated historical Hawkes intensities
-├── results/
-│   ├── models/             # Pre-trained PPO weights (.zip)
-│   └── plots/              # Execution dashboards and backtest charts
-├── src/
-│   ├── env/
-│   │   ├── execution_env.py   # Synthetic AC + Hawkes Environment
-│   │   └── historical_env.py  # Historical Replay Environment
-│   ├── data/
-│   │   └── preprocess.py      # Hawkes intensity estimation logic
-│   └── train_ppo.py           # RL Training script
-└── README.md
-```

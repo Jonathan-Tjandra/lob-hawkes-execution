@@ -2,8 +2,8 @@
 Trains a PPO agent to optimally execute an order block
 while navigating the Hawkes-simulated limit order book.
 
-Run fresh:   python train.py
-Resume:      python train.py --resume
+Run fresh:   python train_ppo.py
+Resume:      python train_ppo.py --resume
 """
 import os
 import argparse

@@ -41,8 +41,8 @@ def collect_trades(n_batches=5, sleep=0.2):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--batches", type=int, default=10)
-    parser.add_argument("--sleep", type=float, default=0.2, help="Seconds to sleep between API calls")
+    parser.add_argument("--batches", type=int, default=150)
+    parser.add_argument("--sleep", type=float, default=2, help="Seconds to sleep between API calls")
     parser.add_argument("--output", type=str, default="data/raw/trades.csv")
     args = parser.parse_args()
 
