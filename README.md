@@ -48,7 +48,7 @@ The agent, trained on synthetic Hawkes data, successfully generalized to real-wo
 
 1. **Clone the Repo**
    ```
-   git clone [https://github.com/Jonathan-Tjandra/lob-hawkes-execution.git](https://github.com/Jonathan-Tjandra/lob-hawkes-execution.git)
+   git clone https://github.com/Jonathan-Tjandra/lob-hawkes-execution.git
    cd lob-hawkes-execution
    ```
 
