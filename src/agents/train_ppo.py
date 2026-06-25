@@ -25,7 +25,10 @@ def train_agent(timesteps=500_000, resume=False):
     Initializes the environment and trains the PPO agent.
     Pass resume=True to continue training from the last saved checkpoint.
     """
+
+    GLOBAL_SEED = 42
     env = OptimalExecutionEnv(initial_inventory=100, max_steps=200)
+    env.reset(seed=GLOBAL_SEED)
     check_env(env, warn=True)
 
     save_dir = "results/models"
@@ -63,6 +66,7 @@ def train_agent(timesteps=500_000, resume=False):
             # Slightly wider network than SB3 default [64, 64].
             # The obs is only 3-dim but the reward surface is non-linear.
             policy_kwargs=dict(net_arch=[128, 128]),
+            seed=GLOBAL_SEED
         )
 
     print(f"Training for {timesteps:,} timesteps...")

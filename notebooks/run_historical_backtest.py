@@ -87,7 +87,7 @@ def run_unified_backtest():
              verticalalignment='bottom', horizontalalignment='right', bbox=props, family='monospace')
 
     plt.tight_layout()
-    plt.savefig("results/plots/historical_comparison_master.png")
+    plt.savefig("results/plots/historical_comparison.png")
     print(f"Master Backtest Dashboard saved. Alpha: {alpha:.2f}")
     plt.show()
 
