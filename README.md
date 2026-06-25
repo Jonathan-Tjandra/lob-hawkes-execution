@@ -35,7 +35,7 @@ The PPO agent consistently outperforms the **Time-Weighted Average Price (TWAP)*
 
 | Metric | TWAP Baseline | PPO Agent | Alpha (Gain) |
 | :--- | :--- | :--- | :--- |
-| **Raw Reward (Slippage Eq.)** | -197.7 | +69.3 | **+267.0s** |
+| **Raw Reward (Slippage Eq.)** | -197.7 | +69.3 | **+267.0** |
 | **Execution Time** | 200s (Fixed) | ~25s (Dynamic) | -175s |
 | **Inventory Risk** | High (Linear) | Low (Front-loaded) | Reduced |
 
